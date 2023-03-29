@@ -1,10 +1,11 @@
 
-
+import { BrowserRouter } from "react-router-dom";
+import Router from "./router/router";
 function App() {
   return (
-    <div className="App">
-      <h1>ola</h1>
-    </div>
+   <BrowserRouter>
+    <Router></Router>
+   </BrowserRouter>
   );
 }
 
