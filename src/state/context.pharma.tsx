@@ -1,21 +1,17 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, useState } from "react";
+import { ContextData, ProviderProps } from "../types/types";
+import useMemoHook from "./usememo";
 
-type ContextData = {
-    products:any[]
-}
-
-type ProviderProps = {
-    children:ReactNode
-}
 
 const ContextPharma = createContext({} as ContextData);
 
 const ContextPharmaProvider = ({children}:ProviderProps) => {
+    const {useMemohook} = useMemoHook()
 
     const [products, setProducts] = useState<any[]>([])
 
     return(
-        <ContextPharma.Provider value={{products}}>
+        <ContextPharma.Provider value={useMemohook}>
             {children}
         </ContextPharma.Provider>
     )
