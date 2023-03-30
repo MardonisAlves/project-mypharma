@@ -5,7 +5,8 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 0px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   
   
 `;

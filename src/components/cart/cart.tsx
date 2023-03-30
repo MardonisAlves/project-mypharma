@@ -3,28 +3,28 @@ import { FaShoppingCart } from "react-icons/fa";
 
 
 const Carttext = styled.p`
-font-size:12px;
-font-weight:400;
+font-size:10px;
+font-weight:500;
 color: #fff;
 
-z-index:999;
-position:absolute;
-top:6%;
-left:86%;
-transform: translate(-0%, -10%);
+z-index:1;
+margin:-53px 0px 0px 16px;
 `
                                                 
 
 const CartFaShoppingCart = styled(FaShoppingCart)`
 color: #309209;
-font-size:80px;
-
+font-size:60px;
+margin:-20px 20px 10px 0px;
 `
 
 const CartStyled = () => {
     return(
         
-            <><CartFaShoppingCart /><Carttext>R$45.90</Carttext></>
+            <>
+            <CartFaShoppingCart />
+            <Carttext>R$45.90</Carttext>
+            </>
         
     )
 }
