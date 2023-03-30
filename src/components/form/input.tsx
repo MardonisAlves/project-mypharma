@@ -14,7 +14,6 @@ const InputWrapper = styled.div`
   display: block;
   margin-bottom: 20px;
   padding:20px;
-
 `;
 
 

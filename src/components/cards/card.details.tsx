@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import styled from 'styled-components';
+import StyledButton from '../button/button';
 import Input from '../form/input';
-
+import { BsFillCartPlusFill } from "react-icons/bs";
 
 const Card = styled.div`
   background-color: #fff;
@@ -33,7 +34,7 @@ const CardText = styled.p`
 
 const CardDetails = () => {
 
-    const [name, setName] = useState<string>("")
+    const [name, setName] = useState<string>("0")
   
 
     const handleSetName = (name:string) => {
@@ -47,17 +48,16 @@ const CardDetails = () => {
         <Container>
           <Row>
             <Col md={8} lg={8} sm={12}>
-          
                 <Card>
                     <CardImage src="https://via.placeholder.com/800x400" alt="Product" />
                     <CardTitle>Product Title</CardTitle>
                     <CardText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</CardText>
                 </Card>
-            
             </Col>
 
             <Col md={4} lg={4} sm={12}>
               <Input label='Nome' name='nome' type='number' value={name} handleChange={handleSetName}/>
+              <StyledButton ><BsFillCartPlusFill /></StyledButton>
             </Col>
 
           </Row>
