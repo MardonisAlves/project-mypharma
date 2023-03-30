@@ -1,7 +1,8 @@
 import { ReactNode } from "react"
 
 export  type ContextData = {
-    products:any[]
+    products:any[],
+    listProductsCallback: () => any
 }
 
 export type ProviderProps = {
