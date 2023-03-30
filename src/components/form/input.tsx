@@ -15,7 +15,7 @@ const InputWrapper = styled.div`
   flex-direction: column;
   margin-bottom: 20px;
   padding:20px;
-  max-width:300px;
+  max-width:500px;
 `;
 
 
