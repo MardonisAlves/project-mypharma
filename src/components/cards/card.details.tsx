@@ -1,25 +1,7 @@
 import { useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 import styled from 'styled-components';
 import Input from '../form/input';
-
-const Container = styled.div`
-  display:flex;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-
-  @media screen and (max-width: 768px) {
-    flex-wrap:wrap;
-  }
-`;
-
-
-const CardWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width:800px;
-`;
 
 
 const Card = styled.div`
@@ -52,33 +34,34 @@ const CardText = styled.p`
 const CardDetails = () => {
 
     const [name, setName] = useState<string>("")
-    const [email, setEmail] = useState<string>("")
+  
 
     const handleSetName = (name:string) => {
         setName(name)
     }
 
-    const handlesetEmail = (email:string) => {
-        setEmail(email)
-    }
+  
     
 
     return (
         <Container>
-            <CardWrapper>
+          <Row>
+            <Col md={8} lg={8} sm={12}>
+          
                 <Card>
                     <CardImage src="https://via.placeholder.com/800x400" alt="Product" />
                     <CardTitle>Product Title</CardTitle>
                     <CardText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</CardText>
                 </Card>
-            </CardWrapper>
-
-    
-                <Input label='Nome Completo' name='nome' type='text' value={name} handleChange={handleSetName}/>
-                <Input label='E-mail' name='email' type='text' value={email} handleChange={handlesetEmail}/>
-        
             
+            </Col>
 
+            <Col md={4} lg={4} sm={12}>
+              <Input label='Nome' name='nome' type='number' value={name} handleChange={handleSetName}/>
+            </Col>
+
+          </Row>
+          
         </Container>
     );
   }

@@ -11,13 +11,11 @@ type InputForm = {
 
 
 const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: block;
   margin-bottom: 20px;
   padding:20px;
-  max-width:500px;
-`;
 
+`;
 
 
 const InputLabel = styled.label`
@@ -28,7 +26,7 @@ const InputLabel = styled.label`
 
 
 const InputField = styled.input`
-width:500px%;
+display:flex;
 font-size: 16px;
 padding: 10px;
 border-radius: 5px;
