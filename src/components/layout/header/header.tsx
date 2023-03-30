@@ -6,6 +6,8 @@ const Header = styled.header`
   align-items: center;
   padding: 20px 0;
   border-bottom: 1px solid #ccc;
+  
+  
 `;
 
 
