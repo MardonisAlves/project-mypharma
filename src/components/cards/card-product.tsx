@@ -6,6 +6,8 @@ const CardWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+
+  margin-top:100px;
 `;
 
 const Card = styled.div`
@@ -27,6 +29,9 @@ const CardImage = styled.img`
 `;
 
 const CardContent = styled.div`
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
   padding: 20px;
 `;
 
@@ -35,9 +40,6 @@ const CardTitle = styled.h2`
   margin-bottom: 10px;
 `;
 
-const CardText = styled.p`
-  font-size: 16px;
-`;
 
 const CardButton = styled.button`
   background-color: #007bff;
@@ -62,7 +64,6 @@ const CardProduct = () => {
         <CardImage src="https://via.placeholder.com/400x200" alt="Card 1" />
         <CardContent>
           <CardTitle>Card 1</CardTitle>
-          <CardText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</CardText>
           <Link to='/products/details'>
             <CardButton>Details</CardButton>
           </Link>
@@ -73,7 +74,6 @@ const CardProduct = () => {
         <CardImage src="https://via.placeholder.com/400x200" alt="Card 2" />
         <CardContent>
           <CardTitle>Card 2</CardTitle>
-          <CardText>Donec vitae sapien ut velit dictum vestibulum.</CardText>
           <Link to='/products/details'>
             <CardButton>Details</CardButton>
           </Link>
@@ -83,18 +83,6 @@ const CardProduct = () => {
         <CardImage src="https://via.placeholder.com/400x200" alt="Card 3" />
         <CardContent>
           <CardTitle>Card 3</CardTitle>
-          <CardText>Nunc non lacus ac velit blandit aliquet ac eget elit.</CardText>
-          <Link to='/products/details'>
-            <CardButton>Details</CardButton>
-          </Link>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardImage src="https://via.placeholder.com/400x200" alt="Card 3" />
-        <CardContent>
-          <CardTitle>Card 3</CardTitle>
-          <CardText>Nunc non lacus ac velit blandit aliquet ac eget elit.</CardText>
           <Link to='/products/details'>
             <CardButton>Details</CardButton>
           </Link>
@@ -105,7 +93,6 @@ const CardProduct = () => {
         <CardImage src="https://via.placeholder.com/400x200" alt="Card 3" />
         <CardContent>
           <CardTitle>Card 3</CardTitle>
-          <CardText>Nunc non lacus ac velit blandit aliquet ac eget elit.</CardText>
           <Link to='/products/details'>
             <CardButton>Details</CardButton>
           </Link>
@@ -116,7 +103,6 @@ const CardProduct = () => {
         <CardImage src="https://via.placeholder.com/400x200" alt="Card 3" />
         <CardContent>
           <CardTitle>Card 3</CardTitle>
-          <CardText>Nunc non lacus ac velit blandit aliquet ac eget elit.</CardText>
           <Link to='/products/details'>
             <CardButton>Details</CardButton>
           </Link>
@@ -127,7 +113,6 @@ const CardProduct = () => {
         <CardImage src="https://via.placeholder.com/400x200" alt="Card 3" />
         <CardContent>
           <CardTitle>Card 3</CardTitle>
-          <CardText>Nunc non lacus ac velit blandit aliquet ac eget elit.</CardText>
           <Link to='/products/details'>
             <CardButton>Details</CardButton>
           </Link>
@@ -138,7 +123,16 @@ const CardProduct = () => {
         <CardImage src="https://via.placeholder.com/400x200" alt="Card 3" />
         <CardContent>
           <CardTitle>Card 3</CardTitle>
-          <CardText>Nunc non lacus ac velit blandit aliquet ac eget elit.</CardText>
+          <Link to='/products/details'>
+            <CardButton>Details</CardButton>
+          </Link>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardImage src="https://via.placeholder.com/400x200" alt="Card 3" />
+        <CardContent>
+          <CardTitle>Card 3</CardTitle>
           <Link to='/products/details'>
             <CardButton>Details</CardButton>
           </Link>

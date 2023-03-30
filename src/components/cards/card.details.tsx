@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import styled from 'styled-components';
 import StyledButton from '../button/button';
 import Input from '../form/input';
-import { BsFillCartPlusFill } from "react-icons/bs";
+import { BsPlusLg } from "react-icons/bs";
 
 const Card = styled.div`
   background-color: #fff;
@@ -34,11 +34,12 @@ const CardText = styled.p`
 
 const CardDetails = () => {
 
-    const [name, setName] = useState<string>("0")
-  
+    const [quantidade, setQuantidade] = useState<string>("0")
+    console.log(quantidade);
+    
 
     const handleSetName = (name:string) => {
-        setName(name)
+      setQuantidade(name)
     }
 
   
@@ -56,8 +57,8 @@ const CardDetails = () => {
             </Col>
 
             <Col md={4} lg={4} sm={12}>
-              <Input label='Nome' name='nome' type='number' value={name} handleChange={handleSetName}/>
-              <StyledButton ><BsFillCartPlusFill /></StyledButton>
+              <Input label='Informe a quantidade' name='quantidade' type='number' min='0' value={quantidade} handleChange={handleSetName}/>
+              <StyledButton ><BsPlusLg /></StyledButton>
             </Col>
 
           </Row>

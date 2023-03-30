@@ -1,8 +1,9 @@
 import { ReactNode } from "react"
+import CartStyled from "../cart/cart"
 import { Container } from "./container/container"
 import Footer from "./footer/footer"
 import Header from "./header/header"
-import Logo from "./logo/logo"
+import {Logo, Img} from "./logo/logo"
 import Nav from "./nav/nav"
 import NavLink from "./navlink/navlink"
 
@@ -14,11 +15,15 @@ export default function Layout({ children }: ChildrenComponente) {
     return (
         <>
             <Header>
-                <Logo>Minha Logo</Logo>
+                <Logo>
+                    <NavLink href="/">
+                    <Img src="/logo.png"/>
+                    </NavLink>
+                </Logo>
                 <Nav>
-                    <NavLink href="/">Home</NavLink>
-                    <NavLink href="#">Sobre</NavLink>
-                    <NavLink href="#">Contato</NavLink>
+                    <NavLink>
+                        <CartStyled></CartStyled>
+                    </NavLink>
                 </Nav>
             </Header>
             {children}
