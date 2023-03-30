@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+
 const CardWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -56,7 +57,13 @@ const CardButton = styled.button`
 `;
 
 
-const CardProduct = () => {
+export default function CardProduct(){
+  
+  
+
+
+
+
   return (
 
     <CardWrapper>
@@ -144,5 +151,3 @@ const CardProduct = () => {
   );
 };
 
-
-export default CardProduct;
