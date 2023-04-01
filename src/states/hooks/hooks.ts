@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 import { listProducts } from "../../api/api";
+import { Products } from "../../components/cards/produts.interface";
 
 
 function UseGetListProducts(){
 
-    const [allproducts, setAllproducts] = useState([]);
+    const [allproducts, setAllproducts] = useState<Products[]>([]);
 
 
     const getProducts = useCallback(async() => {

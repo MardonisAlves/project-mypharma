@@ -1,7 +1,8 @@
 import { ReactNode } from "react"
+import { Products } from "../components/cards/produts.interface"
 
 export  type ContextData = {
-    allproducts:any[],
+    allproducts:Products[],
     getProducts: () => any
 }
 
