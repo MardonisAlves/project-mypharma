@@ -8,3 +8,13 @@ export async function listProducts(){
      return error   
     }
 }
+
+
+export async function listProdutsById(id:string) {
+    try {
+     const {data} =  await createInstance.get(`list/product/${id}`);
+     return data   
+    } catch (error) {
+       return error 
+    }
+}

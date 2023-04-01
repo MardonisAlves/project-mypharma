@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { Context } from '../../states/context/context';
 import Card  from 'react-bootstrap/Card';
-
+import { Image } from 'react-bootstrap';
 
 const CardWrapper = styled.div`
   display: flex;
@@ -19,18 +19,18 @@ const CardStyle = styled(Card)`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border:none;
   padding-top:10px;
-  margin: 20px;
+  margin: 10px;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
-  width: 16rem;
+  width: 18rem;
   &:hover {
     transform: scale(1.05);
   }
 `;
 
-const CardImage = styled.img`
+const CardImage = styled(Image)`
   width: 100%;
-  height: 250px;
+  height: 260px;
 `;
 
 const CardContent = styled.div`
@@ -73,7 +73,7 @@ export default function CardProduct(){
      allproducts.map((item) => {
       return(
       <CardStyle key={item.id}>
-        <CardImage src={item.upload.location} alt="Card 1" />
+        <CardImage src={item.upload.location} alt="Card Product" fluid/>
         <CardContent>
           <CardTitle> {item.name} - R${item.price} </CardTitle>
 
