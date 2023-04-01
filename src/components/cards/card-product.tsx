@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { Context } from '../../states/context/context';
+import Card  from 'react-bootstrap/Card';
 
 
 const CardWrapper = styled.div`
@@ -11,13 +14,15 @@ const CardWrapper = styled.div`
   margin-top:100px;
 `;
 
-const Card = styled.div`
+const CardStyle = styled(Card)`
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border:none;
+  padding-top:10px;
   margin: 20px;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
-
+  width: 20rem;
   &:hover {
     transform: scale(1.05);
   }
@@ -25,8 +30,7 @@ const Card = styled.div`
 
 const CardImage = styled.img`
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  height: 250px;
 `;
 
 const CardContent = styled.div`
@@ -59,93 +63,27 @@ const CardButton = styled.button`
 
 export default function CardProduct(){
   
+  const {allproducts} = useContext(Context)
   
-
-
-
-
   return (
 
     <CardWrapper>
-      <Card>
-        <CardImage src="https://via.placeholder.com/400x200" alt="Card 1" />
+     {allproducts[0]?.id !== undefined ? 
+     allproducts.map((item) => {
+      return(
+      <CardStyle>
+        <CardImage src={item.upload.location} alt="Card 1" />
         <CardContent>
-          <CardTitle>Card 1</CardTitle>
-          <Link to='/products/details'>
-            <CardButton>Details</CardButton>
-          </Link>
-
-        </CardContent>
-      </Card>
-      <Card>
-        <CardImage src="https://via.placeholder.com/400x200" alt="Card 2" />
-        <CardContent>
-          <CardTitle>Card 2</CardTitle>
+          <CardTitle> {item.name} </CardTitle>
           <Link to='/products/details'>
             <CardButton>Details</CardButton>
           </Link>
         </CardContent>
-      </Card>
-      <Card>
-        <CardImage src="https://via.placeholder.com/400x200" alt="Card 3" />
-        <CardContent>
-          <CardTitle>Card 3</CardTitle>
-          <Link to='/products/details'>
-            <CardButton>Details</CardButton>
-          </Link>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardImage src="https://via.placeholder.com/400x200" alt="Card 3" />
-        <CardContent>
-          <CardTitle>Card 3</CardTitle>
-          <Link to='/products/details'>
-            <CardButton>Details</CardButton>
-          </Link>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardImage src="https://via.placeholder.com/400x200" alt="Card 3" />
-        <CardContent>
-          <CardTitle>Card 3</CardTitle>
-          <Link to='/products/details'>
-            <CardButton>Details</CardButton>
-          </Link>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardImage src="https://via.placeholder.com/400x200" alt="Card 3" />
-        <CardContent>
-          <CardTitle>Card 3</CardTitle>
-          <Link to='/products/details'>
-            <CardButton>Details</CardButton>
-          </Link>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardImage src="https://via.placeholder.com/400x200" alt="Card 3" />
-        <CardContent>
-          <CardTitle>Card 3</CardTitle>
-          <Link to='/products/details'>
-            <CardButton>Details</CardButton>
-          </Link>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardImage src="https://via.placeholder.com/400x200" alt="Card 3" />
-        <CardContent>
-          <CardTitle>Card 3</CardTitle>
-          <Link to='/products/details'>
-            <CardButton>Details</CardButton>
-          </Link>
-        </CardContent>
-      </Card>
-
+      </CardStyle>
+      )
+     })
+     
+     : ""}
     </CardWrapper>
 
   );
