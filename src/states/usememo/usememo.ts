@@ -1,14 +1,18 @@
 import { useMemo } from "react";
 import { ContextData } from "../../types/types";
-import { UseGetListProducts } from "../hooks/hooks";
+import { UseGetListProducts, UseGetListProdutsById } from "../hooks/hooks";
 
 export default function useMemoHook(){
-    const {allproducts, getProducts} = UseGetListProducts()
-    
+
+    const {allproducts, getProducts} = UseGetListProducts();
+    const {product, getProduct} = UseGetListProdutsById();
+
     const hookMemo = useMemo<ContextData>(() => ({
-        allproducts, 
-        getProducts
-    }) , [allproducts, getProducts])
+        allproducts,
+        product,
+        getProducts,
+        getProduct
+    }) , [allproducts, product, getProducts, getProduct])
 
 
     return {hookMemo}

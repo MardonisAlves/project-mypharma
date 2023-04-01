@@ -7,7 +7,7 @@ export default function Router() {
   return (
     <Routes>
       <Route path='/' element={<Home />}></Route>
-      <Route path='/products/details' element={<ProducDetails />}></Route>
+      <Route path='/products/details/:id' element={<ProducDetails />}></Route>
     </Routes>
 
   )
