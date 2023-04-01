@@ -7,7 +7,7 @@ export default function ProducDetails() {
         <Layout>
             <Main>
                 <Container>
-                    <CardDetails />
+                    <CardDetails/>
                 </Container>
             </Main>
         </Layout>

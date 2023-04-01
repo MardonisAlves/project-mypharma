@@ -72,13 +72,15 @@ export default function CardProduct(){
      {allproducts[0]?.id !== undefined ? 
      allproducts.map((item) => {
       return(
-      <CardStyle>
+      <CardStyle key={item.id}>
         <CardImage src={item.upload.location} alt="Card 1" />
         <CardContent>
           <CardTitle> {item.name} - R${item.price} </CardTitle>
-          <Link to='/products/details'>
+
+          <Link to={`/products/details/${item.id}`}>
             <CardButton>Details</CardButton>
           </Link>
+          
         </CardContent>
       </CardStyle>
       )

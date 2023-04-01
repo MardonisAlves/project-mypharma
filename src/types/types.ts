@@ -9,3 +9,7 @@ export  type ContextData = {
 export type ProviderProps = {
     children:ReactNode
 }
+
+export type PropsProductsDetails = {
+id:string
+}

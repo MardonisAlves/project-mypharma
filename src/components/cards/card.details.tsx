@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import StyledButton from '../button/button';
 import Input from '../form/input';
 import { BsPlusLg } from "react-icons/bs";
+import { useParams } from 'react-router-dom';
 
 const Card = styled.div`
   background-color: #fff;
@@ -33,18 +34,15 @@ const CardText = styled.p`
 
 
 const CardDetails = () => {
-
-    const [quantidade, setQuantidade] = useState<string>("0")
-    console.log(quantidade);
+    const {id} = useParams()
     
-
+    const [quantidade, setQuantidade] = useState<string>("0")
+  
     const handleSetName = (name:string) => {
       setQuantidade(name)
     }
 
-  
     
-
     return (
         <Container>
           <Row>
