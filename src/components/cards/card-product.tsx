@@ -11,7 +11,7 @@ const CardWrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  margin-top:100px;
+  margin:100px 0px 60px 0px;
 `;
 
 const CardStyle = styled(Card)`
@@ -22,7 +22,7 @@ const CardStyle = styled(Card)`
   margin: 20px;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
-  width: 20rem;
+  width: 16rem;
   &:hover {
     transform: scale(1.05);
   }
@@ -41,8 +41,8 @@ const CardContent = styled.div`
 `;
 
 const CardTitle = styled.h2`
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 12px;
+  margin-bottom: 0px;
 `;
 
 
@@ -50,8 +50,9 @@ const CardButton = styled.button`
   background-color: #007bff;
   color: #fff;
   border: none;
-  padding: 10px;
-  border-radius:5px;
+  padding: 5px;
+  border-radius:2px;
+  font-size: 12px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 
@@ -74,7 +75,7 @@ export default function CardProduct(){
       <CardStyle>
         <CardImage src={item.upload.location} alt="Card 1" />
         <CardContent>
-          <CardTitle> {item.name} </CardTitle>
+          <CardTitle> {item.name} - R${item.price} </CardTitle>
           <Link to='/products/details'>
             <CardButton>Details</CardButton>
           </Link>
