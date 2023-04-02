@@ -29,33 +29,30 @@ function UseGetListProdutsById() {
 
 
 function UsegetItemsProducts() {
-    const [items, setItems] = useState<Items[]>([])
-
+    const [items, setItems] = useState<Items[]>([{
+        id:"0",
+        name:"",
+        qtd:0,
+        value:0,
+        valueitems:0
+    }])
     const getItems = useCallback(async () => {
         const listItems = await getItemsProduct()
         setItems(listItems)
     }, [])
-
     useEffect(() => {
         getItems()
     }, [getItems])
-
     return { items, getItems }
 }
 
 
 function UseCalculeteValueItems() {
     const [total, setTotal] = useState<number>(0)
-   
-
     const calculateValue = useCallback(async (items: Items[]) => {
         const total:any = await calculateValueTotal(items)
-            setTotal(total)
-            
+            setTotal(total) 
     }, [setTotal])
-
-   
-
      return {total, calculateValue }
 }
 
