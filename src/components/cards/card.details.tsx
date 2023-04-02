@@ -37,36 +37,32 @@ const CardText = styled.p`
 
 const CardDetails = () => {
   const {
-    items,
     product, 
     getProduct,
-    getItems,
     hanhlesaveItensStorage,
-    calculateValue
   } = useContext(Context)
 
     const {id}:any = useParams()
     const [quantidade, setQuantidade] = useState<string>("0")
     
 
-
     const handleSetName = (qtd:string) => {
       setQuantidade(qtd)
     }
 
-
+    
     const addcartItem = async () => {
+      const value:any = parseFloat(product[0].price)
       const item:Items = {
         qtd:parseInt(quantidade),
-        value: Number(product[0].price),
+        value: parseFloat(product[0].price),
         id:product[0].id,
-        valueitems: parseInt(quantidade) * Number(product[0].price)
+        valueitems: parseInt(quantidade) * value.toFixed(2)
       }
+        hanhlesaveItensStorage(item)
+        window.location.href = '/'
+        setQuantidade("0")
 
-     await hanhlesaveItensStorage(item)
-     await getItems()
-     setQuantidade("0")
-     await calculateValue(items)
     }
 
 

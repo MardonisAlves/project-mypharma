@@ -19,13 +19,16 @@ import { Items } from "../interfaces/itens.interface";
 
 
 
-const calculateValueTotal = async (itens:Items[]) => {
-    if(itens?.length !== undefined){
-        let soma:number = 0;
-        itens.forEach(item => {
+const calculateValueTotal = async (items:Items[]) => {
+    if(items.length > 0){
+        let soma:any = 0;
+        items.forEach(item => {
             soma += Number(item.valueitems)
         })
-       return  soma
+        
+       return  parseFloat(soma).toFixed(2)
+    }else{
+      return 0
     }
   }
 
