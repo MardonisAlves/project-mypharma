@@ -1,14 +1,14 @@
 import { useMemo } from "react";
 import { ContextData } from "../../types/types";
 import { UseCalculeteValueItems, UsegetItemsProducts, UseGetListProducts, UseGetListProdutsById } from "../hooks/hooks";
-import {hanhlesaveItensStorage}  from './../../utils/utils'
+import {hanhlesaveItensStorage,notificationToast}  from './../../utils/utils'
 export default function useMemoHook(){
 
     const {allproducts, getProducts} = UseGetListProducts();
     const {product, getProduct} = UseGetListProdutsById();
     const {items, getItems} = UsegetItemsProducts()
     const {total, calculateValue} = UseCalculeteValueItems();
-
+    const {notify} = notificationToast()
     const hookMemo = useMemo<ContextData>(() => ({
         allproducts,
         product,
@@ -18,7 +18,8 @@ export default function useMemoHook(){
         getProducts,
         getProduct,
         hanhlesaveItensStorage,
-        calculateValue
+        calculateValue,
+        notify
     }) , [
         allproducts, 
         product, 
@@ -27,7 +28,8 @@ export default function useMemoHook(){
         getItems, 
         getProducts, 
         getProduct,
-        calculateValue
+        calculateValue,
+        notify
     ])
 
 

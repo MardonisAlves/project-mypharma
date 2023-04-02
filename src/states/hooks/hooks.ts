@@ -46,7 +46,7 @@ function UsegetItemsProducts() {
 
 function UseCalculeteValueItems() {
     const [total, setTotal] = useState<number>(0)
-    const {items} = UsegetItemsProducts()
+   
 
     const calculateValue = useCallback(async (items: Items[]) => {
         const total:any = await calculateValueTotal(items)
@@ -54,9 +54,7 @@ function UseCalculeteValueItems() {
             
     }, [setTotal])
 
-    useEffect(() => {
-        calculateValue(items)
-    },[items,calculateValue])
+   
 
      return {total, calculateValue }
 }

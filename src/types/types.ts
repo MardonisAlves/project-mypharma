@@ -11,7 +11,8 @@ export  type ContextData = {
     getProducts: () => any,
     getProduct: (id:string) => any,
     hanhlesaveItensStorage: (items:Items) => any,
-    calculateValue: (items:Items[]) => any
+    calculateValue: (items:Items[]) => any,
+    notify: (message:string) => any
 }
 
 export type ProviderProps = {

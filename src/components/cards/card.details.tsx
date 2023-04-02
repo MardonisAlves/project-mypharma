@@ -7,12 +7,16 @@ import { BsPlusLg } from "react-icons/bs";
 import { useParams } from 'react-router-dom';
 import { Context } from '../../states/context/context';
 import { Items } from '../../interfaces/itens.interface';
+import {  ToastContainer } from 'react-toastify';
+
+
 
 const CardStyle = styled(Card)`
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border: none;
-  padding: 20px;
+  padding: 100px;
+  margin: 10px 0px 0px 0px;
 `;
 
 
@@ -39,7 +43,9 @@ const CardDetails = () => {
   const {
     product, 
     getProduct,
+    getItems,
     hanhlesaveItensStorage,
+    notify
   } = useContext(Context)
 
     const {id}:any = useParams()
@@ -50,8 +56,10 @@ const CardDetails = () => {
       setQuantidade(qtd)
     }
 
+  
     
     const addcartItem = async () => {
+      window.event?.preventDefault()
       const value:any = parseFloat(product[0].price)
       const item:Items = {
         qtd:parseInt(quantidade),
@@ -59,10 +67,11 @@ const CardDetails = () => {
         id:product[0].id,
         valueitems: parseInt(quantidade) * value.toFixed(2)
       }
-        hanhlesaveItensStorage(item)
-        window.location.href = '/'
-        setQuantidade("0")
 
+      await  hanhlesaveItensStorage(item)
+      await getItems()
+      notify("produto adicionado com sucesso!")
+        setQuantidade("0")
     }
 
 
@@ -73,6 +82,7 @@ const CardDetails = () => {
 
     
     return (
+      <>
         <Container>
           <Row>
             <Col md={8} lg={8} sm={12}>
@@ -81,7 +91,7 @@ const CardDetails = () => {
                   return(
                 <CardStyle key={item.id}>
                     <CardImage variant="top" src={item.upload.location} alt="Product details"/>
-                    <CardTitle>{item.name} </CardTitle>
+                    <CardTitle>{item.name} - R${item.price} </CardTitle>
                     <CardText> {item.description} </CardText>
                 </CardStyle>
                     
@@ -106,8 +116,9 @@ const CardDetails = () => {
             </Col>
 
           </Row>
-          
         </Container>
+          <ToastContainer />
+      </>
     );
   }
 

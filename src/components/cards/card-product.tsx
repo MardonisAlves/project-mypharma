@@ -50,8 +50,8 @@ const CardButton = styled.button`
   background-color: #007bff;
   color: #fff;
   border: none;
-  padding: 5px;
-  border-radius:2px;
+  padding: 10px;
+  border-radius:5px;
   font-size: 12px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
@@ -73,7 +73,7 @@ export default function CardProduct(){
      allproducts.map((item) => {
       return(
       <CardStyle key={item.id}>
-        <CardImage src={item.upload.location} alt="Card Product" fluid/>
+        <CardImage src={item.upload.location} alt="Card Product" />
         <CardContent>
           <CardTitle> {item.name} - R${item.price} </CardTitle>
 

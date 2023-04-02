@@ -1,4 +1,6 @@
+import { toast } from "react-toastify";
 import { Items } from "../interfaces/itens.interface";
+import 'react-toastify/dist/ReactToastify.css';
 
  const hanhlesaveItensStorage = async (itens: Items) => {
     const lista_intens = JSON.parse(localStorage.getItem('items') || '[]');
@@ -33,4 +35,14 @@ const calculateValueTotal = async (items:Items[]) => {
   }
 
 
-  export {hanhlesaveItensStorage, getItemsProduct, calculateValueTotal}
+
+  const notificationToast = () => {
+    const notify = (message:string) => toast.success(message,{
+       position:'bottom-right',
+       theme:'light'
+    });
+    return {notify}
+  }
+
+
+  export {hanhlesaveItensStorage, getItemsProduct, calculateValueTotal, notificationToast}
