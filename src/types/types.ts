@@ -1,4 +1,5 @@
 import { ReactNode } from "react"
+import { Theme } from "react-toastify"
 import { Products } from "../components/cards/produts.interface"
 import { Items } from "../interfaces/itens.interface"
 
@@ -12,7 +13,8 @@ export  type ContextData = {
     getProduct: (id:string) => any,
     hanhlesaveItensStorage: (items:Items) => any,
     calculateValue: (items:Items[]) => any,
-    notify: (message:string) => any
+    notify: (message:string, theme:Theme) => any,
+    deleteItem: (index:number) => any
 }
 
 export type ProviderProps = {

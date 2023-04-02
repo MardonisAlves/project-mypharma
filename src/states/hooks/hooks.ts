@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { listProducts, listProdutsById } from "../../api/api";
 import { Products } from "../../components/cards/produts.interface";
 import { Items } from "../../interfaces/itens.interface";
-import { getItemsProduct, calculateValueTotal } from "../../utils/utils";
+import { getItemsProduct, calculateValueTotal, deleteItemProduct } from "../../utils/utils";
 
 
 function UseGetListProducts() {
@@ -57,9 +57,21 @@ function UseCalculeteValueItems() {
 }
 
 
+function UseDeleteItemsproducts(){
+    const deleteItem = useCallback(async(index:number) => {
+        console.log(index);
+        
+         await deleteItemProduct(index)
+    },[])
+
+    return {deleteItem}
+}
+
+
 export {
     UseGetListProducts,
     UseGetListProdutsById,
     UsegetItemsProducts,
-    UseCalculeteValueItems
+    UseCalculeteValueItems,
+    UseDeleteItemsproducts
 }

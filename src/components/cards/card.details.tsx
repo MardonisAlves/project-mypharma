@@ -70,7 +70,7 @@ export default function CardDetails() {
 
       await  hanhlesaveItensStorage(item)
       await getItems()
-      notify("produto adicionado com sucesso!")
+      notify("produto adicionado com sucesso!", 'colored')
         setQuantidade("0")
     }
 
