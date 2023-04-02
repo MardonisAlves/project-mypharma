@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
-import { Card, Col, Container,  Row } from 'react-bootstrap';
+import {  Card, Col, Container,  Row } from 'react-bootstrap';
 import styled from 'styled-components';
 import StyledButton from '../button/button';
 import Input from '../form/input';
 import { BsPlusLg } from "react-icons/bs";
 import { useParams } from 'react-router-dom';
 import { Context } from '../../states/context/context';
+import { Items } from '../../interfaces/itens.interface';
 
 const CardStyle = styled(Card)`
   background-color: #fff;
@@ -35,15 +36,39 @@ const CardText = styled.p`
 
 
 const CardDetails = () => {
+  const {
+    items,
+    product, 
+    getProduct,
+    getItems,
+    hanhlesaveItensStorage,
+    calculateValue
+  } = useContext(Context)
+
     const {id}:any = useParams()
-    
     const [quantidade, setQuantidade] = useState<string>("0")
-  
-    const handleSetName = (name:string) => {
-      setQuantidade(name)
+    
+
+
+    const handleSetName = (qtd:string) => {
+      setQuantidade(qtd)
     }
 
-    const {product, getProduct} = useContext(Context)
+
+    const addcartItem = async () => {
+      const item:Items = {
+        qtd:parseInt(quantidade),
+        value: Number(product[0].price),
+        id:product[0].id,
+        valueitems: parseInt(quantidade) * Number(product[0].price)
+      }
+
+     await hanhlesaveItensStorage(item)
+     await getItems()
+     setQuantidade("0")
+     await calculateValue(items)
+    }
+
 
     
     useEffect(() => {
@@ -58,7 +83,7 @@ const CardDetails = () => {
               {product[0]?.id !== undefined ? 
                 product.map((item) => {
                   return(
-                <CardStyle>
+                <CardStyle key={item.id}>
                     <CardImage variant="top" src={item.upload.location} alt="Product details"/>
                     <CardTitle>{item.name} </CardTitle>
                     <CardText> {item.description} </CardText>
@@ -70,8 +95,18 @@ const CardDetails = () => {
             </Col>
 
             <Col md={4} lg={4} sm={12}>
-              <Input label='Informe a quantidade' name='quantidade' type='number' min='0' value={quantidade} handleChange={handleSetName}/>
-              <StyledButton ><BsPlusLg /></StyledButton>
+              <Input 
+              label='Informe a quantidade' 
+              name='quantidade' 
+              type='number' 
+              min='0' 
+              value={quantidade} 
+              handleChange={handleSetName}/>
+
+              <StyledButton 
+              onClick={addcartItem} 
+              disabled={quantidade === "0" ? true : false}><BsPlusLg />
+              </StyledButton>
             </Col>
 
           </Row>

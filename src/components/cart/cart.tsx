@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { FaShoppingCart } from "react-icons/fa";
+import { useContext } from "react";
+import { Context } from "../../states/context/context";
 
 
 const Carttext = styled.p`
@@ -10,7 +12,7 @@ color: #fff;
 z-index:1;
 margin:-53px 0px 0px 16px;
 `
-                                                
+
 
 const CartFaShoppingCart = styled(FaShoppingCart)`
 color: #309209;
@@ -19,13 +21,13 @@ margin:-20px 20px 10px 0px;
 `
 
 const CartStyled = () => {
-    return(
-        
-            <>
+
+    const { total } = useContext(Context)
+    return (
+        <>
             <CartFaShoppingCart />
-            <Carttext>R$45.90</Carttext>
-            </>
-        
+            <Carttext> R${total} </Carttext>
+        </>
     )
 }
 
