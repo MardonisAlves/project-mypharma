@@ -7,6 +7,7 @@ const Header = styled.header`
   padding: 20px 0;
   border-bottom: 0px solid #ccc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #060e50;
   
   
 `;
