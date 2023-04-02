@@ -10,7 +10,7 @@ font-weight:500;
 color: #000;
 
 z-index:1;
-margin:-63px 0px 0px 20px;
+margin:-63px 0px 0px 23px;
 `
 
 

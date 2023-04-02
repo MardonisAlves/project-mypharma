@@ -21,7 +21,7 @@ export default function Layout({ children }: ChildrenComponente) {
                     </NavLink>
                 </Logo>
                 <Nav>
-                    <NavLink>
+                    <NavLink href="/delete/items">
                         <CartStyled></CartStyled>
                     </NavLink>
                 </Nav>

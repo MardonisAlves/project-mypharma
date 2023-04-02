@@ -39,7 +39,7 @@ const CardText = styled.p`
 
 
 
-const CardDetails = () => {
+export default function CardDetails() {
   const {
     product, 
     getProduct,
@@ -59,9 +59,9 @@ const CardDetails = () => {
   
     
     const addcartItem = async () => {
-      window.event?.preventDefault()
       const value:any = parseFloat(product[0].price)
       const item:Items = {
+        name: product[0].name,
         qtd:parseInt(quantidade),
         value: parseFloat(product[0].price),
         id:product[0].id,
@@ -70,7 +70,7 @@ const CardDetails = () => {
 
       await  hanhlesaveItensStorage(item)
       await getItems()
-      notify("produto adicionado com sucesso!")
+      notify("produto adicionado com sucesso!", 'colored')
         setQuantidade("0")
     }
 
@@ -122,5 +122,3 @@ const CardDetails = () => {
     );
   }
 
-
-export default CardDetails;
