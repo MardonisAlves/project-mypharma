@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      -name:  Install dependecias
+      - name:  Install dependecias
 
       - run: npm ci
       - run: npm run install
