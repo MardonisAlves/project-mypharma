@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import {  Card, Col, Container,  Row } from 'react-bootstrap';
 import styled from 'styled-components';
-import StyledButton from '../button/button';
-import Input from '../form/input';
+import StyledButton from '../form/button/button';
+import Input from '../form/input/input';
 import { BsPlusLg } from "react-icons/bs";
 import { useParams } from 'react-router-dom';
 import { Context } from '../../states/context/context';
