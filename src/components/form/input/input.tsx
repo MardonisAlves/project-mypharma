@@ -13,8 +13,9 @@ type InputForm = {
 
 const InputWrapper = styled.div`
   display: block;
-  margin-bottom: 20px;
-  padding:20px;
+  margin: 20px 0px;
+  padding:0px;
+
 `;
 
 
@@ -30,7 +31,8 @@ display:flex;
 font-size: 16px;
 padding: 10px;
 border-radius: 5px;
-border: 1px solid #ccc;
+width: 100%;
+border: 4px solid #ccc;
 `;
 
 
@@ -39,7 +41,7 @@ const Input = ({ label, type, name, value, min, handleChange }: InputForm) => {
     return (
         <InputWrapper>
             <InputLabel htmlFor={name}>{label}</InputLabel>
-            <InputField type={type} id={name} name={name} value={value} min={min} onChange={(e) => handleChange(e.target.value)} />
+            <InputField type={type} id={name} name={name} value={value} min={min} onChange={(e:any) => handleChange(e.target.value)} />
         </InputWrapper>
     );
 };
