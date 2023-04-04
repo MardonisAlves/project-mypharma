@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
-import { listProducts, listProdutsById } from "../../api/api";
+import { listProducts, listProdutsById, listCategory } from "../../api/api";
 import { Products } from "../../components/cards/produts.interface";
+import { Category } from "../../interfaces/category.interface";
 import { Items } from "../../interfaces/itens.interface";
 import { getItemsProduct, calculateValueTotal, deleteItemProduct } from "../../utils/utils";
 
@@ -58,13 +59,27 @@ function UseCalculeteValueItems() {
 
 
 function UseDeleteItemsproducts(){
-    const deleteItem = useCallback(async(index:number) => {
-        console.log(index);
-        
+    const deleteItem = useCallback(async(index:number) => {       
          await deleteItemProduct(index)
     },[])
 
     return {deleteItem}
+}
+
+
+function UseListCategory(){
+    const [category, setCategory] = useState<Category[]>([])
+
+    const getCategory = useCallback(async() => {
+        const listcategory = await listCategory()
+        setCategory(listcategory)
+    },[setCategory])
+
+    useEffect(() => {
+        getCategory()
+    },[getCategory])
+
+    return {category, getCategory}
 }
 
 
@@ -73,5 +88,6 @@ export {
     UseGetListProdutsById,
     UsegetItemsProducts,
     UseCalculeteValueItems,
-    UseDeleteItemsproducts
+    UseDeleteItemsproducts,
+    UseListCategory
 }

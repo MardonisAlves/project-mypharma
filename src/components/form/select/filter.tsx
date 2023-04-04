@@ -5,7 +5,8 @@ import Input from '../input/input';
 import { useState } from 'react';
 import CheckBox from '../checkbox/checkbox';
 import SelectCustom from './select-custom';
-import { Products } from '../../cards/produts.interface';
+import { Category } from '../../../interfaces/category.interface';
+
 
 
 const CheckBoxWrapper = styled.div`
@@ -15,10 +16,10 @@ const CheckBoxWrapper = styled.div`
 `
 
 type PropsSelect = {
-    options:Products[]
+    options:Category[]
 }
 
-export default function Filter({ options, ...rest }: PropsSelect) {
+export default function Filter({ options }: PropsSelect) {
 
     const [pesquisar, setPesquisa] = useState<string>("")
 

@@ -1,6 +1,7 @@
 import { ReactNode } from "react"
 import { Theme } from "react-toastify"
 import { Products } from "../components/cards/produts.interface"
+import { Category } from "../interfaces/category.interface"
 import { Items } from "../interfaces/itens.interface"
 
 export  type ContextData = {
@@ -8,6 +9,7 @@ export  type ContextData = {
     product: Products[],
     items:Items[],
     total: number,
+    category: Category[],
     getItems:() => any,
     getProducts: () => any,
     getProduct: (id:string) => any,
@@ -15,6 +17,7 @@ export  type ContextData = {
     calculateValue: (items:Items[]) => any,
     notify: (message:string, theme:Theme) => any,
     deleteItem: (index:number) => any
+    getCategory: () => any
 }
 
 export type ProviderProps = {
