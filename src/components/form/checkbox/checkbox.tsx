@@ -14,7 +14,11 @@ type PropsCheck =  {
 export default function CheckBox({label,type, handleChangeMaiorPreco}:PropsCheck){
     return(
       
-            <StyledCheckBox type={type} label={label} onClick={handleChangeMaiorPreco} />
+            <StyledCheckBox 
+            type={type} 
+            label={label} 
+            onClick={handleChangeMaiorPreco} 
+            />
        
     )
 }

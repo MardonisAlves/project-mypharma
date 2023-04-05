@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { Context } from "../../states/context/context";
-import CustomSelect from "../form/select/filter";
+import FilterCustom from "../form/select/filter";
 
 export default function FilterProducts(){
     const {getProducts} = useContext(Context)
@@ -11,6 +11,6 @@ export default function FilterProducts(){
     },[getProducts])
 
     return(
-        <CustomSelect />
+        <FilterCustom />
     )
 }

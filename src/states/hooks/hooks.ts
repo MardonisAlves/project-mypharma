@@ -5,7 +5,8 @@ import {
     listCategory, 
     listCategoryById,
     filterProductsByName,
-    filterProductsByLowestPrice
+    filterProductsByLowestPrice,
+    filterProductsBiggesPrice
     } from "../../api/api";
 import { Products } from "../../components/cards/produts.interface";
 import { Category } from "../../components/filterproducts/category.interface";
@@ -58,12 +59,23 @@ const [lowestprice, setLowestPrice] = useState<Products[]>([])
 
 const getProductsLowestPrice = useCallback(async() => {
     const lowestprice = await filterProductsByLowestPrice()
-    console.log(lowestprice);
     setLowestPrice([])
     setLowestPrice(lowestprice)
 },[setLowestPrice])
 
 return {lowestprice, getProductsLowestPrice}
+}
+
+
+function UseFilterBiggesPrice(){
+    const [biggesprice, setBiggesPrice] = useState<Products[]>([])
+
+    const getProductsBiggesPrice = useCallback(async() => {
+        const listbiggesprice = await filterProductsBiggesPrice()
+        setBiggesPrice(listbiggesprice)
+    },[setBiggesPrice])
+
+    return {biggesprice, getProductsBiggesPrice}
 }
     
 
@@ -138,5 +150,6 @@ export {
     UseDeleteItemsproducts,
     UseListCategory,
     UseFilterProducts,
-    UseFilterLowestPrice
+    UseFilterLowestPrice,
+    UseFilterBiggesPrice
 }

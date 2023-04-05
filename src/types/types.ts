@@ -9,6 +9,7 @@ export  type ContextData = {
     product: Products[],
     filter: Products[],
     lowestprice:Products[],
+    biggesprice: Products[],
     items:Items[],
     total: number,
     category: Category[],
@@ -22,7 +23,8 @@ export  type ContextData = {
     getCategory: () => any,
     filterProducts: (name:string) => any,
     setAllproducts: (products:Products[]) => any,
-    getProductsLowestPrice: () => any
+    getProductsLowestPrice: () => any,
+    getProductsBiggesPrice: () => any
 }
 
 export type ProviderProps = {

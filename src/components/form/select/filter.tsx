@@ -15,17 +15,22 @@ const CheckBoxWrapper = styled.div`
    align-items: center;
 `
 
-export default function Filter() {
+export default function FilterCustom() {
 
     const {
         category, 
         filter, 
         lowestprice,
+        biggesprice,
         getProducts, 
         filterProducts, 
         setAllproducts,
-        getProductsLowestPrice
+        getProductsLowestPrice,
+        getProductsBiggesPrice
     } = useContext(Context)
+    
+    
+    
     const [name, setName] = useState<string>("pesquisar")
   
     
@@ -37,15 +42,15 @@ export default function Filter() {
     }
 
     const handleChangeLowestPrice = async () => {
-        getProductsLowestPrice()
-        setAllproducts([])
+       await getProductsLowestPrice()
         setAllproducts(lowestprice)
     }
 
 
-    const handleChange = async () => {
-        getProductsLowestPrice()
-        setAllproducts(lowestprice)
+    const handleChangeBiggesPrice = async () => {
+       await getProductsBiggesPrice()
+        setAllproducts(biggesprice)
+        
     }
 
 
@@ -83,7 +88,7 @@ export default function Filter() {
 
                 <CheckBox 
                 label='Maior Preço' type='checkbox'
-                handleChangeMaiorPreco={handleChange}
+                handleChangeMaiorPreco={handleChangeBiggesPrice}
                 />  
                 </CheckBoxWrapper>
                              
