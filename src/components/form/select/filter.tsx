@@ -17,7 +17,15 @@ const CheckBoxWrapper = styled.div`
 
 export default function Filter() {
 
-    const {category, filter, getProducts, filterProducts , setAllproducts} = useContext(Context)
+    const {
+        category, 
+        filter, 
+        lowestprice,
+        getProducts, 
+        filterProducts, 
+        setAllproducts,
+        getProductsLowestPrice
+    } = useContext(Context)
     const [name, setName] = useState<string>("pesquisar")
   
     
@@ -28,9 +36,18 @@ export default function Filter() {
            
     }
 
-    const handleChangeMaiorPreco = () => {
-        console.log('Maior Preco')
+    const handleChangeLowestPrice = async () => {
+        getProductsLowestPrice()
+        setAllproducts([])
+        setAllproducts(lowestprice)
     }
+
+
+    const handleChange = async () => {
+        getProductsLowestPrice()
+        setAllproducts(lowestprice)
+    }
+
 
     const handleChaneValue = async (categoria:string) => {
        await getProducts(categoria)
@@ -60,13 +77,13 @@ export default function Filter() {
 
                 <CheckBoxWrapper>
                 <CheckBox 
-                label='Maior Preço' type='checkbox'
-                handleChangeMaiorPreco={handleChangeMaiorPreco}
+                label='Menor Preço' type='checkbox'
+                handleChangeMaiorPreco={handleChangeLowestPrice}
                 />  
 
                 <CheckBox 
-                label='Menor Preço' type='checkbox'
-                handleChangeMaiorPreco={handleChangeMaiorPreco}
+                label='Maior Preço' type='checkbox'
+                handleChangeMaiorPreco={handleChange}
                 />  
                 </CheckBoxWrapper>
                              

@@ -4,7 +4,8 @@ import {
     listProdutsById, 
     listCategory, 
     listCategoryById,
-    filterProductsByName
+    filterProductsByName,
+    filterProductsByLowestPrice
     } from "../../api/api";
 import { Products } from "../../components/cards/produts.interface";
 import { Category } from "../../components/filterproducts/category.interface";
@@ -37,11 +38,9 @@ function UseGetListProducts() {
 
 function UseFilterProducts() {
    const {getProducts} = UseGetListProducts() 
-   const [filter, setFilter ] = useState<any>("")
+   const [filter, setFilter ] = useState<Products[]>([])
     const filterProducts = useCallback(async (name:string) => {
         if(name !== ""){
-            console.log(Math.random(), name);
-            
             const products = await await filterProductsByName(name)
             setFilter(products)
         }else{
@@ -54,6 +53,19 @@ function UseFilterProducts() {
 }
 
 
+function UseFilterLowestPrice(){
+const [lowestprice, setLowestPrice] = useState<Products[]>([])
+
+const getProductsLowestPrice = useCallback(async() => {
+    const lowestprice = await filterProductsByLowestPrice()
+    console.log(lowestprice);
+    setLowestPrice([])
+    setLowestPrice(lowestprice)
+},[setLowestPrice])
+
+return {lowestprice, getProductsLowestPrice}
+}
+    
 
 function UseGetListProdutsById() {
     const [product, setAllproduct] = useState<Products[]>([])
@@ -125,5 +137,6 @@ export {
     UseCalculeteValueItems,
     UseDeleteItemsproducts,
     UseListCategory,
-    UseFilterProducts
+    UseFilterProducts,
+    UseFilterLowestPrice
 }

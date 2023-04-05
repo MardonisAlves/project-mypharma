@@ -7,7 +7,8 @@ import {
     UseGetListProducts, 
     UseGetListProdutsById, 
     UseListCategory,
-    UseFilterProducts
+    UseFilterProducts,
+    UseFilterLowestPrice
 } from "../hooks/hooks";
 import {hanhlesaveItensStorage,notificationToast}  from './../../utils/utils'
 export default function useMemoHook(){
@@ -20,7 +21,7 @@ export default function useMemoHook(){
     const {deleteItem}  = UseDeleteItemsproducts()
     const {category, getCategory} = UseListCategory()
     const {filter, filterProducts } = UseFilterProducts()
-
+    const {lowestprice, getProductsLowestPrice} = UseFilterLowestPrice()
 
     const hookMemo = useMemo<ContextData>(() => ({
         allproducts,
@@ -29,6 +30,7 @@ export default function useMemoHook(){
         total,
         category,
         filter,
+        lowestprice,
         getItems,
         getProducts,
         getProduct,
@@ -38,7 +40,8 @@ export default function useMemoHook(){
         deleteItem,
         getCategory,
         filterProducts,
-        setAllproducts
+        setAllproducts,
+        getProductsLowestPrice
     }) , [
         allproducts, 
         product, 
@@ -46,6 +49,7 @@ export default function useMemoHook(){
         total,
         category,
         filter,
+        lowestprice,
         getItems, 
         getProducts, 
         getProduct,
@@ -54,7 +58,8 @@ export default function useMemoHook(){
         deleteItem,
         getCategory,
         filterProducts,
-        setAllproducts
+        setAllproducts,
+        getProductsLowestPrice
 
     ])
 

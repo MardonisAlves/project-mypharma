@@ -45,3 +45,13 @@ export async function filterProductsByName(name:string){
     return error
     }
 }
+
+
+export async function filterProductsByLowestPrice(){
+    try {
+      const {data} = await createInstance.get('product/lowestprice')  
+      return data
+    } catch (error) {
+    return error
+    }
+}
