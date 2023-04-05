@@ -36,14 +36,14 @@ function UseGetListProducts() {
 
 
 function UseFilterProducts() {
-   const {getProducts} = UseGetListProducts() 
+
    const [filter, setFilter ] = useState<Products[]>([])
     const filterProducts = useCallback(async (name:string) => {
         if(name !== ""){
             const products = await await filterProductsByName(name)
             setFilter(products)
         }
-    }, [setFilter, getProducts])
+    }, [setFilter])
 
     return { filter, filterProducts}
 }
