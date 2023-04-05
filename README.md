@@ -44,9 +44,15 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-# project-mypharma
+# project-mypharma Clicar na imagem para o abrir o projeto page HOME
 
 <p align="left">
   <a href="https://project-mypharma.vercel.app/" target="blank"><img src="public/home.png" alt="Doc Api" /></a>
 </p>
 
+# page details products 
+<img src="public/details.png" alt="Doc Api" /></a>
+
+
+# page delete item 
+<img src="public/delete.png" alt="Doc Api" /></a>
