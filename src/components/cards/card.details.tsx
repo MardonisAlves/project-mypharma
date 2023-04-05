@@ -28,13 +28,13 @@ const CardImage = styled(Card.Img)`
 
 const CardTitle = styled.h2`
   font-size: 20px;
-  margin: 20px 0px;
+  margin: 20px 10px;
 `;
 
 
 const CardText = styled.p`
   font-size: 16px;
-  margin-bottom: 10px;
+  margin: 5px 10px 20px;
 `;
 
 
