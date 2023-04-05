@@ -5,6 +5,10 @@ export interface Products {
     description: string,
     estoque: string,
     categoria: string,
+    category: {
+        id: string,
+        category: string
+      },
     upload: {
         id: string,
         location: string,

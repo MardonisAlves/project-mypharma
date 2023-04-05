@@ -27,3 +27,12 @@ export async function listCategory(){
        return error 
     }
 }
+
+export async function listCategoryById(id:string){
+try {
+    const {data} = await createInstance.get(`list/category/${id}`)
+    return data
+} catch (error) {
+    return error
+}
+}

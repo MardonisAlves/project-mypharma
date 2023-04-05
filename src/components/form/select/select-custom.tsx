@@ -1,6 +1,6 @@
 import { Form } from "react-bootstrap";
 import styled from "styled-components";
-import { Category } from "../../../interfaces/category.interface";
+import { Category } from "../../filterproducts/category.interface";
 
 
 const SelectWrapper = styled.div`
@@ -26,11 +26,14 @@ type PropsSelect = {
 export default function SelectCustom({ options, handleChaneValue}: PropsSelect) {
   return (
     <SelectWrapper>
-      <FormSelect id="disabledSelect" name="pesuisa" onChange={(e:any) => handleChaneValue(e.target.value)}>
-        <option value="">Disabled categoria</option>
+      <FormSelect 
+        id="disabledSelect" 
+        onClick={(e:any) => handleChaneValue(e.target.value)}
+        >
+        <option value="null">Selecione Categorias</option>
         {options !== undefined ?
-          options.map((option: any) => (
-            <option key={option.value} value={option.id}>
+          options.map((option) => (
+            <option key={option.id} value={option.id}>
               {option.category}
             </option>
           ))

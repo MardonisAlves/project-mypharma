@@ -1,22 +1,32 @@
 import { useCallback, useEffect, useState } from "react";
-import { listProducts, listProdutsById, listCategory } from "../../api/api";
+import { listProducts, listProdutsById, listCategory, listCategoryById} from "../../api/api";
 import { Products } from "../../components/cards/produts.interface";
-import { Category } from "../../interfaces/category.interface";
-import { Items } from "../../interfaces/itens.interface";
+import { Category } from "../../components/filterproducts/category.interface";
+import { Items } from "../../components/cards/itens.interface";
 import { getItemsProduct, calculateValueTotal, deleteItemProduct } from "../../utils/utils";
-
+ 
 
 function UseGetListProducts() {
     const [allproducts, setAllproducts] = useState<Products[]>([]);
-    const getProducts = useCallback(async () => {
-        const products = await listProducts()
-        setAllproducts(products)
+    const getProducts = useCallback(async (id:string) => {
+
+        if(id !== "null"){
+            const listcategory = await listCategoryById(id)
+            setAllproducts([])
+            setAllproducts(listcategory)
+        }
+
+        if(id === "null"){
+            const products = await listProducts()
+            setAllproducts(products)
+        }
+
+
     }, [setAllproducts])
-    useEffect(() => {
-        getProducts()
-    }, [getProducts])
-    return { allproducts, getProducts }
+
+    return { allproducts, getProducts, setAllproducts }
 }
+
 
 
 function UseGetListProdutsById() {
@@ -62,7 +72,6 @@ function UseDeleteItemsproducts(){
     const deleteItem = useCallback(async(index:number) => {       
          await deleteItemProduct(index)
     },[])
-
     return {deleteItem}
 }
 
@@ -89,5 +98,5 @@ export {
     UsegetItemsProducts,
     UseCalculeteValueItems,
     UseDeleteItemsproducts,
-    UseListCategory
+    UseListCategory,
 }

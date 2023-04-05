@@ -5,7 +5,7 @@ import Input from '../input/input';
 import { useState } from 'react';
 import CheckBox from '../checkbox/checkbox';
 import SelectCustom from './select-custom';
-import { Category } from '../../../interfaces/category.interface';
+import { Category } from '../../filterproducts/category.interface';
 
 
 
@@ -16,10 +16,11 @@ const CheckBoxWrapper = styled.div`
 `
 
 type PropsSelect = {
-    options:Category[]
+    options:Category[],
+    getProducts:(id:string) => any
 }
 
-export default function Filter({ options }: PropsSelect) {
+export default function Filter({ options, getProducts }: PropsSelect) {
 
     const [pesquisar, setPesquisa] = useState<string>("")
 
@@ -31,8 +32,8 @@ export default function Filter({ options }: PropsSelect) {
         console.log('Maior Preco')
     }
 
-    const handleChaneValue = (categoria:any) => {
-        console.log(categoria)
+    const handleChaneValue = async (categoria:string) => {
+       await getProducts(categoria)
     }
 
     return (
@@ -52,7 +53,10 @@ export default function Filter({ options }: PropsSelect) {
                  </Col>
                  <Col sm="12" md="8">
 
-                <SelectCustom options= {options} handleChaneValue={handleChaneValue} />
+                <SelectCustom 
+                options= {options} 
+                handleChaneValue={handleChaneValue} 
+                />
 
                 <CheckBoxWrapper>
                 <CheckBox 
