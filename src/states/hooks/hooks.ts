@@ -29,8 +29,6 @@ function UseGetListProducts() {
             setAllproducts([])
             setAllproducts(products)
         }
-
-
     }, [setAllproducts])
 
     return { allproducts, getProducts , setAllproducts}
@@ -44,9 +42,6 @@ function UseFilterProducts() {
         if(name !== ""){
             const products = await await filterProductsByName(name)
             setFilter(products)
-        }else{
-            let id:any="null"
-            getProducts(id)
         }
     }, [setFilter, getProducts])
 
