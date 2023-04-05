@@ -1,5 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
-import { listProducts, listProdutsById, listCategory, listCategoryById} from "../../api/api";
+import { 
+    listProducts,
+    listProdutsById, 
+    listCategory, 
+    listCategoryById,
+    filterProductsByName
+    } from "../../api/api";
 import { Products } from "../../components/cards/produts.interface";
 import { Category } from "../../components/filterproducts/category.interface";
 import { Items } from "../../components/cards/itens.interface";
@@ -18,13 +24,33 @@ function UseGetListProducts() {
 
         if(id === "null"){
             const products = await listProducts()
+            setAllproducts([])
             setAllproducts(products)
         }
 
 
     }, [setAllproducts])
 
-    return { allproducts, getProducts, setAllproducts }
+    return { allproducts, getProducts , setAllproducts}
+}
+
+
+function UseFilterProducts() {
+   const {getProducts} = UseGetListProducts() 
+   const [filter, setFilter ] = useState<any>("")
+    const filterProducts = useCallback(async (name:string) => {
+        if(name !== ""){
+            console.log(Math.random(), name);
+            
+            const products = await await filterProductsByName(name)
+            setFilter(products)
+        }else{
+            let id:any="null"
+            getProducts(id)
+        }
+    }, [setFilter, getProducts])
+
+    return { filter, filterProducts}
 }
 
 
@@ -99,4 +125,5 @@ export {
     UseCalculeteValueItems,
     UseDeleteItemsproducts,
     UseListCategory,
+    UseFilterProducts
 }

@@ -7,17 +7,19 @@ import {
     UseGetListProducts, 
     UseGetListProdutsById, 
     UseListCategory,
+    UseFilterProducts
 } from "../hooks/hooks";
 import {hanhlesaveItensStorage,notificationToast}  from './../../utils/utils'
 export default function useMemoHook(){
 
-    const {allproducts, getProducts} = UseGetListProducts();
+    const {allproducts, getProducts,setAllproducts} = UseGetListProducts();
     const {product, getProduct} = UseGetListProdutsById();
     const {items, getItems} = UsegetItemsProducts()
     const {total, calculateValue} = UseCalculeteValueItems();
     const {notify} = notificationToast()
     const {deleteItem}  = UseDeleteItemsproducts()
     const {category, getCategory} = UseListCategory()
+    const {filter, filterProducts } = UseFilterProducts()
 
 
     const hookMemo = useMemo<ContextData>(() => ({
@@ -26,6 +28,7 @@ export default function useMemoHook(){
         items,
         total,
         category,
+        filter,
         getItems,
         getProducts,
         getProduct,
@@ -33,13 +36,16 @@ export default function useMemoHook(){
         calculateValue,
         notify,
         deleteItem,
-        getCategory
+        getCategory,
+        filterProducts,
+        setAllproducts
     }) , [
         allproducts, 
         product, 
         items, 
         total,
         category,
+        filter,
         getItems, 
         getProducts, 
         getProduct,
@@ -47,6 +53,9 @@ export default function useMemoHook(){
         notify,
         deleteItem,
         getCategory,
+        filterProducts,
+        setAllproducts
+
     ])
 
 
