@@ -4,6 +4,7 @@ import { useContext, useEffect } from 'react';
 import { Context } from '../../states/context/context';
 import Card  from 'react-bootstrap/Card';
 import { Image } from 'react-bootstrap';
+import AnimatedProgressBar from '../progressbar/progressbar';
 
 const CardWrapper = styled.div`
   display: flex;
@@ -92,7 +93,9 @@ export default function CardProduct(){
       )
      })
      
-     : ""}
+     : 
+     <AnimatedProgressBar />
+     }
     </CardWrapper>
 
   );
