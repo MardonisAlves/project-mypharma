@@ -18,44 +18,44 @@ const CheckBoxWrapper = styled.div`
 export default function FilterCustom() {
 
     const {
-        category, 
-        filter, 
+        category,
+        filter,
         lowestprice,
         biggesprice,
-        getProducts, 
-        filterProducts, 
+        getProducts,
+        filterProducts,
         setAllproducts,
         getProductsLowestPrice,
         getProductsBiggesPrice
     } = useContext(Context)
-    
-    
-    
+
+
+
     const [name, setName] = useState<string>("pesquisar")
-  
-    
-    const handleInputChange = (pesquisa:string) => {
-            setName(pesquisa)
-            filterProducts(pesquisa)
-            setAllproducts(filter)
-           
+
+
+    const handleInputChange = async (pesquisa: string) => {
+        setName(pesquisa)
+        await filterProducts(pesquisa)
+        await setAllproducts(filter)
+
     }
 
     const handleChangeLowestPrice = async () => {
-       await getProductsLowestPrice()
-        setAllproducts(lowestprice)
+        await getProductsLowestPrice()
+        await setAllproducts(lowestprice)
     }
 
 
     const handleChangeBiggesPrice = async () => {
-       await getProductsBiggesPrice()
-        setAllproducts(biggesprice)
-        
+        await getProductsBiggesPrice()
+        await setAllproducts(biggesprice)
+
     }
 
 
-    const handleChaneValue = async (categoria:string) => {
-       await getProducts(categoria)
+    const handleChaneValue = async (categoria: string) => {
+        await getProducts(categoria)
 
     }
 
@@ -63,35 +63,35 @@ export default function FilterCustom() {
         <Container>
             <Row>
                 <Col sm="12" md="4">
-                <Input 
-                label='Pesquisar'
-                 type='text' 
-                 handleChange={handleInputChange}
-                 name="pesquisar"
-                 value={name}
-                 />
-                 
-                 
-                 </Col>
-                 <Col sm="12" md="8">
+                    <Input
+                        label='Pesquisar'
+                        type='text'
+                        handleChange={handleInputChange}
+                        name="pesquisar"
+                        value={name}
+                    />
 
-                <SelectCustom 
-                options= {category} 
-                handleChaneValue={handleChaneValue} 
-                />
 
-                <CheckBoxWrapper>
-                <CheckBox 
-                label='Menor Preço' type='checkbox'
-                handleChangeMaiorPreco={handleChangeLowestPrice}
-                />  
+                </Col>
+                <Col sm="12" md="8">
 
-                <CheckBox 
-                label='Maior Preço' type='checkbox'
-                handleChangeMaiorPreco={handleChangeBiggesPrice}
-                />  
-                </CheckBoxWrapper>
-                             
+                    <SelectCustom
+                        options={category}
+                        handleChaneValue={handleChaneValue}
+                    />
+
+                    <CheckBoxWrapper>
+                        <CheckBox
+                            label='Menor Preço' type='checkbox'
+                            handleChangeMaiorPreco={handleChangeLowestPrice}
+                        />
+
+                        <CheckBox
+                            label='Maior Preço' type='checkbox'
+                            handleChangeMaiorPreco={handleChangeBiggesPrice}
+                        />
+                    </CheckBoxWrapper>
+
                 </Col>
             </Row>
 

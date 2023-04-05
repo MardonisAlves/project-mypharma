@@ -29,8 +29,6 @@ function UseGetListProducts() {
             setAllproducts([])
             setAllproducts(products)
         }
-
-
     }, [setAllproducts])
 
     return { allproducts, getProducts , setAllproducts}
@@ -38,17 +36,14 @@ function UseGetListProducts() {
 
 
 function UseFilterProducts() {
-   const {getProducts} = UseGetListProducts() 
+
    const [filter, setFilter ] = useState<Products[]>([])
     const filterProducts = useCallback(async (name:string) => {
         if(name !== ""){
             const products = await await filterProductsByName(name)
             setFilter(products)
-        }else{
-            let id:any="null"
-            getProducts(id)
         }
-    }, [setFilter, getProducts])
+    }, [setFilter])
 
     return { filter, filterProducts}
 }
