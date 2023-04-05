@@ -7,6 +7,8 @@ import { Items } from "../components/cards/itens.interface"
 export  type ContextData = {
     allproducts:Products[],
     product: Products[],
+    filter: Products[],
+    lowestprice:Products[],
     items:Items[],
     total: number,
     category: Category[],
@@ -18,6 +20,9 @@ export  type ContextData = {
     notify: (message:string, theme:Theme) => any,
     deleteItem: (index:number) => any
     getCategory: () => any,
+    filterProducts: (name:string) => any,
+    setAllproducts: (products:Products[]) => any,
+    getProductsLowestPrice: () => any
 }
 
 export type ProviderProps = {

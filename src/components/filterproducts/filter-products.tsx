@@ -3,7 +3,7 @@ import { Context } from "../../states/context/context";
 import CustomSelect from "../form/select/filter";
 
 export default function FilterProducts(){
-    const {category, getProducts} = useContext(Context)
+    const {getProducts} = useContext(Context)
     
     useEffect(() => {
         let id:any=null
@@ -11,9 +11,6 @@ export default function FilterProducts(){
     },[getProducts])
 
     return(
-        <CustomSelect 
-        options={category} 
-        getProducts={getProducts} 
-        />
+        <CustomSelect />
     )
 }

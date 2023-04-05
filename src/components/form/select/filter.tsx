@@ -2,10 +2,10 @@
 import styled from 'styled-components';
 import { Col, Container, Row } from 'react-bootstrap';
 import Input from '../input/input';
-import { useState } from 'react';
 import CheckBox from '../checkbox/checkbox';
 import SelectCustom from './select-custom';
-import { Category } from '../../filterproducts/category.interface';
+import { useContext, useState } from 'react';
+import { Context } from '../../../states/context/context';
 
 
 
@@ -15,25 +15,43 @@ const CheckBoxWrapper = styled.div`
    align-items: center;
 `
 
-type PropsSelect = {
-    options:Category[],
-    getProducts:(id:string) => any
-}
+export default function Filter() {
 
-export default function Filter({ options, getProducts }: PropsSelect) {
-
-    const [pesquisar, setPesquisa] = useState<string>("")
-
+    const {
+        category, 
+        filter, 
+        lowestprice,
+        getProducts, 
+        filterProducts, 
+        setAllproducts,
+        getProductsLowestPrice
+    } = useContext(Context)
+    const [name, setName] = useState<string>("pesquisar")
+  
+    
     const handleInputChange = (pesquisa:string) => {
-        setPesquisa(pesquisa)
+            setName(pesquisa)
+            filterProducts(pesquisa)
+            setAllproducts(filter)
+           
     }
 
-    const handleChangeMaiorPreco = () => {
-        console.log('Maior Preco')
+    const handleChangeLowestPrice = async () => {
+        getProductsLowestPrice()
+        setAllproducts([])
+        setAllproducts(lowestprice)
     }
+
+
+    const handleChange = async () => {
+        getProductsLowestPrice()
+        setAllproducts(lowestprice)
+    }
+
 
     const handleChaneValue = async (categoria:string) => {
        await getProducts(categoria)
+
     }
 
     return (
@@ -44,9 +62,8 @@ export default function Filter({ options, getProducts }: PropsSelect) {
                 label='Pesquisar'
                  type='text' 
                  handleChange={handleInputChange}
-                 min="0"
-                 name={pesquisar}
-                 value={pesquisar}
+                 name="pesquisar"
+                 value={name}
                  />
                  
                  
@@ -54,19 +71,19 @@ export default function Filter({ options, getProducts }: PropsSelect) {
                  <Col sm="12" md="8">
 
                 <SelectCustom 
-                options= {options} 
+                options= {category} 
                 handleChaneValue={handleChaneValue} 
                 />
 
                 <CheckBoxWrapper>
                 <CheckBox 
-                label='Maior Preço' type='checkbox'
-                handleChangeMaiorPreco={handleChangeMaiorPreco}
+                label='Menor Preço' type='checkbox'
+                handleChangeMaiorPreco={handleChangeLowestPrice}
                 />  
 
                 <CheckBox 
-                label='Menor Preço' type='checkbox'
-                handleChangeMaiorPreco={handleChangeMaiorPreco}
+                label='Maior Preço' type='checkbox'
+                handleChangeMaiorPreco={handleChange}
                 />  
                 </CheckBoxWrapper>
                              

@@ -36,3 +36,22 @@ try {
     return error
 }
 }
+
+export async function filterProductsByName(name:string){
+    try {
+      const {data} = await createInstance.get(`filter/product/${name}`)  
+      return data
+    } catch (error) {
+    return error
+    }
+}
+
+
+export async function filterProductsByLowestPrice(){
+    try {
+      const {data} = await createInstance.get('product/lowestprice')  
+      return data
+    } catch (error) {
+    return error
+    }
+}
