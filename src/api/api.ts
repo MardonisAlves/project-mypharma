@@ -18,3 +18,21 @@ export async function listProdutsById(id:string) {
        return error 
     }
 }
+
+export async function listCategory(){
+    try {
+       const {data} = await createInstance.get('list/category') 
+       return data
+    } catch (error) {
+       return error 
+    }
+}
+
+export async function listCategoryById(id:string){
+try {
+    const {data} = await createInstance.get(`list/category/${id}`)
+    return data
+} catch (error) {
+    return error
+}
+}

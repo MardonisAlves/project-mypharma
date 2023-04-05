@@ -1,20 +1,23 @@
 import { ReactNode } from "react"
 import { Theme } from "react-toastify"
 import { Products } from "../components/cards/produts.interface"
-import { Items } from "../interfaces/itens.interface"
+import { Category } from "../components/filterproducts/category.interface"
+import { Items } from "../components/cards/itens.interface"
 
 export  type ContextData = {
     allproducts:Products[],
     product: Products[],
     items:Items[],
     total: number,
+    category: Category[],
     getItems:() => any,
-    getProducts: () => any,
+    getProducts: (id:string) => any,
     getProduct: (id:string) => any,
     hanhlesaveItensStorage: (items:Items) => any,
     calculateValue: (items:Items[]) => any,
     notify: (message:string, theme:Theme) => any,
     deleteItem: (index:number) => any
+    getCategory: () => any,
 }
 
 export type ProviderProps = {

@@ -1,5 +1,5 @@
 import { Theme, toast } from "react-toastify";
-import { Items } from "../interfaces/itens.interface";
+import { Items } from "../components/cards/itens.interface";
 import 'react-toastify/dist/ReactToastify.css';
 
 const hanhlesaveItensStorage = async (itens: Items) => {

@@ -6,7 +6,7 @@ import Input from '../form/input/input';
 import { BsPlusLg } from "react-icons/bs";
 import { useParams } from 'react-router-dom';
 import { Context } from '../../states/context/context';
-import { Items } from '../../interfaces/itens.interface';
+import { Items } from './itens.interface';
 import {  ToastContainer } from 'react-toastify';
 
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Context } from '../../states/context/context';
 import Card  from 'react-bootstrap/Card';
 import { Image } from 'react-bootstrap';
@@ -64,7 +64,13 @@ const CardButton = styled.button`
 
 export default function CardProduct(){
   
-  const {allproducts} = useContext(Context)
+  const {allproducts, getProducts} = useContext(Context)
+
+  useEffect(() => {
+    let id:any="null"
+    getProducts(id)
+}, [getProducts])
+  
   
   return (
 
